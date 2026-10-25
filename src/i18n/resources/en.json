@@ -600,6 +600,30 @@
       },
       "name": "In-App Menu"
     },
+    "like-all-songs": {
+      "description": "Adds a button to playlist pages that likes every song in the playlist, one at a time",
+      "menu": {
+        "delay": {
+          "label": "Delay between likes",
+          "submenu": {
+            "seconds": "{{seconds}} s"
+          }
+        }
+      },
+      "name": "Like All Songs",
+      "templates": {
+        "button": {
+          "done": "Liked {{liked}} · {{skipped}} already liked",
+          "error": "Stopped by an error after {{liked}} / {{total}}, try again later",
+          "idle": "Like all songs",
+          "liking": "Liking {{liked}} / {{total}} (click to stop)",
+          "loading": "Loading playlist… {{count}} songs (click to stop)",
+          "nothing": "All {{count}} songs are already liked",
+          "stopped": "Stopped: liked {{liked}} / {{total}}"
+        },
+        "unavailable": " · {{count}} unavailable or disliked"
+      }
+    },
     "lumiastream": {
       "description": "Adds Lumia Stream support",
       "name": "Lumia Stream [Beta]"

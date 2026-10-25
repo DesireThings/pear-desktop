@@ -1,0 +1,35 @@
+#like-all-songs {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.like-all-songs-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 16px 0 12px;
+  border: none;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.1);
+  color: inherit;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.like-all-songs-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.like-all-songs-button[aria-pressed='true'] {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.like-all-songs-button svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
