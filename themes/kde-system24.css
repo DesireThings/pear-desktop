@@ -89,6 +89,8 @@ html[music-web-color-migration] {
   --ytmusic-menu-item-hover-background-color: var(--kde-accent-soft) !important;
   --ytmusic-menu-item-focus-background-color: var(--kde-accent-soft) !important;
   --ytmusic-responsive-list-item-checked-background-bauhaus: var(--kde-accent-soft) !important;
+  --yt-spec-call-to-action: var(--kde-accent-hover) !important;
+  --yt-sys-color-baseline--call-to-action: var(--kde-accent-hover) !important;
 
   /* Primary buttons and active chips: accent instead of white */
   --ytmusic-play-pause-button-background: var(--kde-accent) !important;
@@ -123,6 +125,40 @@ ytmusic-browse-response .background-gradient {
   --paper-slider-knob-start-border-color: var(--kde-accent) !important;
   --paper-slider-secondary-color: rgba(255, 255, 255, 0.18) !important;
   --paper-slider-container-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Search top-result card: keep the blurred artwork, but fade it into the
+   theme surface instead of pure black */
+ytmusic-card-shelf-renderer #background.immersive-background::before {
+  background: linear-gradient(rgba(28, 28, 28, 0.3), var(--kde-surface) 86%) !important;
+}
+
+ytmusic-card-shelf-renderer .card-container {
+  border-radius: var(--kde-radius);
+  overflow: hidden;
+}
+
+/* YouTube's "filled mono" buttons (Shuffle, Mix, Play all) are near-white
+   with black text; make them accent buttons */
+button.ytSpecButtonShapeNextFilled.ytSpecButtonShapeNextMono {
+  background: var(--kde-accent) !important;
+  color: #fff !important;
+  border-color: var(--kde-accent) !important;
+}
+
+button.ytSpecButtonShapeNextFilled.ytSpecButtonShapeNextMono:hover {
+  background: var(--kde-accent-hover) !important;
+}
+
+button.ytSpecButtonShapeNextFilled.ytSpecButtonShapeNextMono * {
+  color: #fff !important;
+  fill: #fff !important;
+}
+
+/* Subscribe is pink-red; use the accent */
+ytmusic-subscribe-button-renderer button.ytSpecButtonShapeNextOutline {
+  color: var(--kde-accent-hover) !important;
+  border-color: var(--kde-accent) !important;
 }
 
 /* Active sidebar entry gets an accent marker instead of a white block */
@@ -161,12 +197,10 @@ html[dark] {
   --ytmusic-display-2_-_font-weight: 500 !important;
 }
 
+/* Whole page: dialogs and popups render outside ytmusic-app */
 html,
 body,
-ytmusic-app,
-ytmusic-app *,
-tp-yt-paper-listbox,
-tp-yt-paper-listbox * {
+body * {
   font-family: var(--kde-font) !important;
   /* DM Mono only ships 300/400/500; avoid synthetic bold */
   font-synthesis: none;
@@ -186,8 +220,15 @@ ytmusic-player-queue-item .song-title {
 
 /* --------------------------------------------------------------- Declutter */
 
-/* Premium promos and banners (the sidebar Upgrade entry is removed with
-   Pear's own Options > Visual Tweaks > Remove upgrade button) */
+/* Sidebar Upgrade entry, matched by the play triangle at the end of its icon
+   path. Pear's "Remove upgrade button" option does not always apply, so the
+   theme hides it as well. Don't match on the path's start: Explore's compass
+   icon begins with the same circle. */
+ytmusic-guide-entry-renderer:has(> tp-yt-paper-item > yt-icon path[d$='Zm3 5-5-3v6l5-3Z']) {
+  display: none !important;
+}
+
+/* Premium promos and banners */
 ytmusic-mealbar-promo-renderer,
 ytmusic-statement-banner-renderer,
 ytmusic-premium-upsell-renderer,
