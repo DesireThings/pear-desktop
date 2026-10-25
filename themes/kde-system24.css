@@ -1,0 +1,233 @@
+/*
+ * KDE System24 theme for Pear Desktop (personal, unofficial).
+ *
+ * Matches the Plasma colour scheme "System24" with the Kvantum dark style:
+ * #1c1c1c window background, #cfcfcf text, #926ee4 accent, DM Mono UI font.
+ *
+ * Load it via Options > Visual Tweaks > Themes. Colours are set through
+ * YouTube Music's own --ytmusic-* variables wherever possible, so the theme
+ * survives most markup changes; the few element selectors are grouped at the
+ * end of each section.
+ */
+
+:root {
+  --kde-bg: #1c1c1c;
+  --kde-surface: #242424;
+  --kde-surface-2: #2c2c2c;
+  --kde-surface-3: #333333;
+  --kde-border: rgba(255, 255, 255, 0.08);
+  --kde-text: #cfcfcf;
+  --kde-text-strong: #ececec;
+  --kde-text-muted: #8a8a8a;
+  --kde-text-disabled: #5e5e5e;
+  --kde-accent: #926ee4;
+  --kde-accent-hover: #a688ec;
+  --kde-accent-selection: #6e55a8;
+  --kde-accent-soft: rgba(146, 110, 228, 0.18);
+  --kde-font: 'DM Mono', 'Noto Sans Mono', monospace;
+  --kde-radius: 6px;
+}
+
+/* ---------------------------------------------------------------- Colours */
+
+html,
+html[dark],
+html[music-web-color-migration] {
+  /* Backgrounds */
+  --ytmusic-background: var(--kde-bg) !important;
+  --ytmusic-general-background-a: var(--kde-surface) !important;
+  --ytmusic-general-background-c: var(--kde-bg) !important;
+  --ytmusic-nav-bar: var(--kde-bg) !important;
+  --ytmusic-player-page-background: var(--kde-bg) !important;
+  --ytmusic-detail-header: var(--kde-bg) !important;
+  --ytmusic-player-bar-background: var(--kde-surface) !important;
+  --ytmusic-brand-background-solid: var(--kde-surface) !important;
+  --ytmusic-color-black1: var(--kde-surface) !important;
+  --ytmusic-color-black2: var(--kde-surface) !important;
+  --ytmusic-color-black4: var(--kde-bg) !important;
+  --ytmusic-search-background: var(--kde-surface-2) !important;
+  --ytmusic-search-bar-background-bauhaus: var(--kde-surface-2) !important;
+  --ytmusic-search-bar-border-bauhaus: var(--kde-border) !important;
+  --ytmusic-search-border: var(--kde-border) !important;
+  --ytmusic-dialog-background-color: var(--kde-surface-3) !important;
+  --ytmusic-dropdown-background: var(--kde-surface-3) !important;
+  --ytmusic-dropdown-item-hover-background: var(--kde-surface-2) !important;
+  --ytmusic-alert-with-actions-background: var(--kde-surface) !important;
+  --ytmusic-multiselect-form-footer-background: var(--kde-surface) !important;
+  --ytmusic-horizontal-action-card-background: var(--kde-surface) !important;
+  --ytmusic-opalescence-dark-grey: var(--kde-surface-3) !important;
+  --ytmusic-text-primary-inverse: var(--kde-bg) !important;
+
+  /* Text */
+  --ytmusic-text-primary: var(--kde-text-strong) !important;
+  --ytmusic-text-secondary: var(--kde-text-muted) !important;
+  --ytmusic-text-disabled: var(--kde-text-disabled) !important;
+  --ytmusic-overlay-text-primary: var(--kde-text-strong) !important;
+  --ytmusic-color-white1: var(--kde-text-strong) !important;
+  --ytmusic-color-grey2: var(--kde-text-muted) !important;
+  --ytmusic-color-grey3: var(--kde-text-muted) !important;
+  --ytmusic-icon-inactive: var(--kde-text-muted) !important;
+  --ytmusic-display-2_-_color: var(--kde-text-strong) !important;
+
+  /* Lines */
+  --ytmusic-divider: var(--kde-border) !important;
+  --ytmusic-guide-divider: var(--kde-border) !important;
+  --ytmusic-dropdown-border-color: var(--kde-border) !important;
+
+  /* Accent: replaces YouTube red and the blue call-to-action colour */
+  --ytmusic-playback-progress-color: var(--kde-accent) !important;
+  --ytmusic-focus-active: var(--kde-accent) !important;
+  --ytmusic-call-to-action: var(--kde-accent) !important;
+  --ytmusic-themed-blue: var(--kde-accent) !important;
+  --ytmusic-color-lightblue: var(--kde-accent) !important;
+  --ytmusic-setting-item-toggle-active: var(--kde-accent) !important;
+  --ytmusic-search-suggestion-focus-active: var(--kde-accent) !important;
+  --ytmusic-brand-link-text: var(--kde-accent) !important;
+  --ytmusic-color-youtubered: var(--kde-accent) !important;
+  --ytmusic-static-brand-red: var(--kde-accent) !important;
+  --ytmusic-guide-hover: var(--kde-accent-soft) !important;
+  --ytmusic-menu-item-hover-background-color: var(--kde-accent-soft) !important;
+  --ytmusic-menu-item-focus-background-color: var(--kde-accent-soft) !important;
+  --ytmusic-responsive-list-item-checked-background-bauhaus: var(--kde-accent-soft) !important;
+
+  /* Primary buttons and active chips: accent instead of white */
+  --ytmusic-play-pause-button-background: var(--kde-accent) !important;
+  --ytmusic-responsive-header-primary-button-background: var(--kde-accent) !important;
+  --ytmusic-toggle-button-chip-active-background: var(--kde-accent) !important;
+  --ytmusic-inverted-background: var(--kde-accent) !important;
+}
+
+/* Text selection matches Plasma's selection colour */
+::selection {
+  background: var(--kde-accent-selection);
+  color: #fff;
+}
+
+body {
+  background: var(--kde-bg) !important;
+}
+
+/* Home/browse pages fade a black gradient over the background; keep it flat */
+ytmusic-browse-response .background-gradient {
+  background: var(--kde-bg) !important;
+}
+
+/* Seek bar and volume slider (YouTube sets a red/pink gradient here) */
+#progress-bar.ytmusic-player-bar,
+#progress-bar.ytmusic-player-controls,
+.volume-slider.ytmusic-player-bar,
+.expand-volume-slider.ytmusic-player-bar {
+  --paper-slider-active-color: var(--kde-accent) !important;
+  --paper-slider-knob-color: var(--kde-accent) !important;
+  --paper-slider-knob-start-color: var(--kde-accent) !important;
+  --paper-slider-knob-start-border-color: var(--kde-accent) !important;
+  --paper-slider-secondary-color: rgba(255, 255, 255, 0.18) !important;
+  --paper-slider-container-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Active sidebar entry gets an accent marker instead of a white block */
+ytmusic-guide-entry-renderer[active] tp-yt-paper-item {
+  background: var(--kde-accent-soft) !important;
+  box-shadow: inset 3px 0 0 var(--kde-accent);
+}
+
+/* Selected chips (All / Familiar / ...) and the queue's Save chip are
+   hard-coded white; give them the accent with readable text and icons */
+ytmusic-chip-cloud-chip-renderer[is-selected] a,
+ytmusic-chip-cloud-chip-renderer[chip-style='STYLE_PRIMARY'] a,
+ytmusic-chip-cloud-chip-renderer[chip-style='STYLE_TRANSPARENT'] a {
+  background: var(--kde-accent) !important;
+  border-color: var(--kde-accent) !important;
+}
+
+ytmusic-chip-cloud-chip-renderer[is-selected] a *,
+ytmusic-chip-cloud-chip-renderer[chip-style='STYLE_PRIMARY'] a *,
+ytmusic-chip-cloud-chip-renderer[chip-style='STYLE_TRANSPARENT'] a * {
+  color: #fff !important;
+  fill: #fff !important;
+}
+
+ytmusic-chip-cloud-chip-renderer[chip-style='STYLE_TRANSPARENT'] a:hover {
+  background: var(--kde-accent-hover) !important;
+}
+
+/* ------------------------------------------------------------------- Font */
+
+html,
+html[dark] {
+  --ytmusic-standard-text-font-family: var(--kde-font) !important;
+  --ytmusic-display-text-font-family: var(--kde-font) !important;
+  --ytmusic-display-2_-_font-family: var(--kde-font) !important;
+  --ytmusic-display-2_-_font-weight: 500 !important;
+}
+
+html,
+body,
+ytmusic-app,
+ytmusic-app *,
+tp-yt-paper-listbox,
+tp-yt-paper-listbox * {
+  font-family: var(--kde-font) !important;
+  /* DM Mono only ships 300/400/500; avoid synthetic bold */
+  font-synthesis: none;
+}
+
+ytmusic-app b,
+ytmusic-app strong,
+ytmusic-app [style*='font-weight: 700'] {
+  font-weight: 500 !important;
+}
+
+/* Monospace runs wider: claw back a little space in dense lists */
+ytmusic-responsive-list-item-renderer .title,
+ytmusic-player-queue-item .song-title {
+  letter-spacing: -0.02em;
+}
+
+/* --------------------------------------------------------------- Declutter */
+
+/* Premium promos and banners (the sidebar Upgrade entry is removed with
+   Pear's own Options > Visual Tweaks > Remove upgrade button) */
+ytmusic-mealbar-promo-renderer,
+ytmusic-statement-banner-renderer,
+ytmusic-premium-upsell-renderer,
+ytmusic-player-bar .upsell-button {
+  display: none !important;
+}
+
+/* Flat, slightly rounded surfaces in place of YouTube's pills and shadows */
+ytmusic-search-box #input-box,
+ytmusic-search-box .search-box {
+  border-radius: var(--kde-radius) !important;
+}
+
+ytmusic-player-bar {
+  border-top: 1px solid var(--kde-border);
+}
+
+ytmusic-app-layout[player-page-open] ytmusic-player-bar,
+ytmusic-player-bar {
+  box-shadow: none !important;
+}
+
+/* ------------------------------------------------------------ Synced Lyrics */
+
+:root {
+  --lyrics-font-family: var(--kde-font) !important;
+  --lyrics-active-font-weight: 500 !important;
+  --lyrics-inactive-font-weight: 400 !important;
+  --lyrics-inactive-opacity: 0.4 !important;
+  --lyrics-font-size: clamp(1.8rem, 1.4vmax, 3.2rem) !important;
+  --glow-color: rgba(146, 110, 228, 0.55) !important;
+}
+
+/* Covers both layouts: per-word spans while synced, plain text otherwise */
+.current .text-lyrics,
+.current .text-lyrics > span > span,
+.current .text-lyrics yt-formatted-string {
+  color: var(--kde-accent-hover) !important;
+}
+
+.text-lyrics.lrc-header {
+  color: var(--kde-text-disabled) !important;
+}
